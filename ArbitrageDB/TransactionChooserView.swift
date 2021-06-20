@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  TransactionChooserView.swift
 //  ArbitrageDB
 //
 //  Created by Jordan Luna on 6/19/21.
@@ -18,28 +18,36 @@ struct TransactionChooserView: View {
                     
                 }
             }
-            .navigationBarTitle("Recent")
-            .navigationTitle("asds")
-            .navigationBarItems(trailing:
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "plus").imageScale(.large)
-                }))
+            .navigationBarTitle("Recent Transactions")
+            .navigationBarItems(trailing: newEntryButton)
         }
 
 
     }
+    
+    var newEntryButton: some View {
+        Button("New"){
+            showNewEntry = true
+        }
+        .sheet(isPresented: $showNewEntry){
+            NewEntryView()
+        }
+    }
+    
+    @State var showNewEntry: Bool = false
 }
+
+
+
 
 struct saleView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
-            .frame(width: UIScreen.main.bounds.width - 32, height: 125)
-            .foregroundColor(.gray)
+            .frame(width: 350, height: 125)
+            .foregroundColor(Color(UIColor.systemGray5))
             .overlay(
                 HStack{
-                    Text("First Sale! \(num)")
+                    Text("Sale! \(num)")
                      .padding()
                     Text("$200.05")
                 }

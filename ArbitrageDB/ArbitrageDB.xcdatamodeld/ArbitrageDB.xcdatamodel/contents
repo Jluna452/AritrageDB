@@ -5,6 +5,7 @@
         <attribute name="entryDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="grossTotal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="itemCost" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="itemPhoto" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="marketPlace" optional="YES" attributeType="String"/>
         <attribute name="otherFees" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="profitable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -14,6 +15,6 @@
         <attribute name="shippingFees" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="SaleItem" positionX="-63" positionY="-18" width="128" height="194"/>
+        <element name="SaleItem" positionX="-63" positionY="-18" width="128" height="209"/>
     </elements>
 </model>

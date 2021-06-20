@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171B135F267FE4AC00D877E2 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B135E267FE4AC00D877E2 /* NewEntryView.swift */; };
 		17B551EB267ED3DF001B2900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B551EA267ED3DF001B2900 /* AppDelegate.swift */; };
 		17B551ED267ED3DF001B2900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B551EC267ED3DF001B2900 /* SceneDelegate.swift */; };
 		17B551EF267ED3DF001B2900 /* TransactionChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B551EE267ED3DF001B2900 /* TransactionChooserView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		171B135E267FE4AC00D877E2 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		17B551E7267ED3DF001B2900 /* ArbitrageDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArbitrageDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B551EA267ED3DF001B2900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17B551EC267ED3DF001B2900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				17B551EA267ED3DF001B2900 /* AppDelegate.swift */,
 				17B551EC267ED3DF001B2900 /* SceneDelegate.swift */,
 				17B551EE267ED3DF001B2900 /* TransactionChooserView.swift */,
+				171B135E267FE4AC00D877E2 /* NewEntryView.swift */,
 				17B551F3267ED3E0001B2900 /* Assets.xcassets */,
 				17B551F8267ED3E0001B2900 /* LaunchScreen.storyboard */,
 				17B551FB267ED3E0001B2900 /* Info.plist */,
@@ -152,6 +155,7 @@
 				17B551ED267ED3DF001B2900 /* SceneDelegate.swift in Sources */,
 				17B551EF267ED3DF001B2900 /* TransactionChooserView.swift in Sources */,
 				17B551F2267ED3DF001B2900 /* ArbitrageDB.xcdatamodeld in Sources */,
+				171B135F267FE4AC00D877E2 /* NewEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
