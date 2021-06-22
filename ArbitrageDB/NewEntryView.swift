@@ -11,9 +11,6 @@ struct NewEntryView: View {
     var body: some View {
         Section(header: Text("New Entry")){
             ScrollView{
-//                Text("New Entry")
-//                    .font(.headline)
-//                    .fontWeight(.light)
                 Spacer()
                 textFieldView(placeHolder: "Sale Item Name", fieldName: "Name")
                 DatePicker("Enter Buy Date", selection: $sellDate, displayedComponents: .date)
@@ -24,8 +21,6 @@ struct NewEntryView: View {
                 textFieldView(placeHolder: "Sale Item Profit", fieldName: "Profit")
             }
         }
-
-        
     }
     
  @State var sellDate = Date()

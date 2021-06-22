@@ -15,6 +15,7 @@
 		17B551F4267ED3E0001B2900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B551F3267ED3E0001B2900 /* Assets.xcassets */; };
 		17B551F7267ED3E0001B2900 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B551F6267ED3E0001B2900 /* Preview Assets.xcassets */; };
 		17B551FA267ED3E0001B2900 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B551F8267ED3E0001B2900 /* LaunchScreen.storyboard */; };
+		17BC40372681885500A1F97F /* ArbitrageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BC40362681885500A1F97F /* ArbitrageDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		17B551F6267ED3E0001B2900 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17B551F9267ED3E0001B2900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17B551FB267ED3E0001B2900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17BC40362681885500A1F97F /* ArbitrageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitrageDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				17B551FB267ED3E0001B2900 /* Info.plist */,
 				17B551F0267ED3DF001B2900 /* ArbitrageDB.xcdatamodeld */,
 				17B551F5267ED3E0001B2900 /* Preview Content */,
+				17BC40362681885500A1F97F /* ArbitrageDatabase.swift */,
 			);
 			path = ArbitrageDB;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			files = (
 				17B551EB267ED3DF001B2900 /* AppDelegate.swift in Sources */,
 				17B551ED267ED3DF001B2900 /* SceneDelegate.swift in Sources */,
+				17BC40372681885500A1F97F /* ArbitrageDatabase.swift in Sources */,
 				17B551EF267ED3DF001B2900 /* TransactionChooserView.swift in Sources */,
 				17B551F2267ED3DF001B2900 /* ArbitrageDB.xcdatamodeld in Sources */,
 				171B135F267FE4AC00D877E2 /* NewEntryView.swift in Sources */,
