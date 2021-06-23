@@ -10,11 +10,16 @@ import UIKit
 import CoreData
 
 struct TransactionChooserView: View {
+//    @ObservedObject var arbitrageDB:ArbitrageDatabase
+//    @FetchRequest var items: FetchedResults<SaleItem>
+    
+
     var body: some View {
         NavigationView {
             List{
-                ForEach(0..<10){ item in
-                    saleView(num:item)
+                ForEach(ArbitrageDatabase.shared.getAllItems()){ item in
+//                    saleView(num:item)
+                    Text("\(item)")
                     
                 }
             }
@@ -23,6 +28,15 @@ struct TransactionChooserView: View {
         }
 
 
+    }
+    
+    
+    
+    init(){
+        ArbitrageDatabase.shared.createNewItem()
+        ArbitrageDatabase.shared.createNewItem()
+        ArbitrageDatabase.shared.createNewItem()
+        ArbitrageDatabase.shared.createNewItem()
     }
     
     var newEntryButton: some View {
@@ -39,28 +53,31 @@ struct TransactionChooserView: View {
 
 
 
-
-struct saleView: View {
-    var body: some View {
-        RoundedRectangle(cornerRadius: 20)
-            .frame(width: 350, height: 125)
-            .foregroundColor(Color(UIColor.systemGray5))
-            .overlay(
-                HStack{
-                    Text("Sale! \(num)")
-                     .padding()
-                    Text("$200.05")
-                }
-
-            )
-
-    }
-    
-    var num: Int
-}
-
-
-
+//
+//struct saleView: View {
+//    @FetchRequest(fetchRequest: SaleItem.fetchRequest()) var saleItem: FetchedResults<SaleItem>
+//    
+//    
+//    var body: some View {
+//        RoundedRectangle(cornerRadius: 20)
+//            .frame(width: 350, height: 125)
+//            .foregroundColor(Color(UIColor.systemGray5))
+//            .overlay(
+//                HStack{
+//                    Text("Sale! \(num.saleDescriptor)")
+//                     .padding()
+//                    Text("\(num.entryDate)")
+//                }
+//
+//            )
+//
+//    }
+//    
+//    var num: SaleItem
+//}
+//
+//
+//
 
 
 

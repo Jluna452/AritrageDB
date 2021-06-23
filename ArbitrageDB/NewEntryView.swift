@@ -36,6 +36,7 @@ struct textFieldView: View {
         //                    self.isEditing = isEditing
                 } onCommit: {
         //                    validate(name: username)
+                    
                 }
             .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .disableAutocorrection(true)

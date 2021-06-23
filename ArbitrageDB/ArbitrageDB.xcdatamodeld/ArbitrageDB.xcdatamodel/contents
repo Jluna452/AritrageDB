@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="SaleItem" representedClassName="SaleItem" syncable="YES" codeGenerationType="class">
+    <entity name="SaleItem" representedClassName="SaleItem" syncable="YES">
         <attribute name="buyDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="entryDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="grossTotal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -15,6 +15,6 @@
         <attribute name="shippingFees" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="SaleItem" positionX="-63" positionY="-18" width="128" height="209"/>
+        <element name="SaleItem" positionX="-63" positionY="-18" width="128" height="14"/>
     </elements>
 </model>
