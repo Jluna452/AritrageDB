@@ -19,6 +19,11 @@ extension SaleItem {
         return request
     }
     
+    var sellDescriptor: String {
+        get { saleDescriptor_ ?? "Unknown" }
+        set { saleDescriptor_ = newValue }
+    }
+    
     
 
     @NSManaged public var buyDate: Date?
@@ -30,7 +35,7 @@ extension SaleItem {
     @NSManaged public var otherFees: Float
     @NSManaged public var profitable: Bool
     @NSManaged public var quantity: Int16
-    @NSManaged public var saleDescriptor: String?
+    @NSManaged public var saleDescriptor_: String?
     @NSManaged public var sellDate: Date?
     @NSManaged public var shippingFees: Float
 

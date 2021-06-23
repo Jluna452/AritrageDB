@@ -12,11 +12,6 @@ import UIKit
 class ArbitrageDatabase: NSObject, ObservableObject {
     static let shared = ArbitrageDatabase()
     
-//    
-//    @FetchRequest(fetchRequest: SaleItem.fetchRequest(.all)) var airports: FetchedResults<SaleItem>
-//    
-//    
-//    
     @Published var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
@@ -34,7 +29,7 @@ class ArbitrageDatabase: NSObject, ObservableObject {
     
     func createNewItem(){
         let newItem = SaleItem(context: context)
-        newItem.saleDescriptor = "blank"
+//        newItem.saleDescriptor_ = "blank"
         newItem.buyDate = Date()
         newItem.entryDate = Date()
         newItem.grossTotal = 12.0
@@ -61,13 +56,10 @@ class ArbitrageDatabase: NSObject, ObservableObject {
     
     
     func update(item:SaleItem, newString:String?, newFloat: Float?, newInt:Int16?, newDate:Date?, field:String){
-        item.saleDescriptor = newString
-        
-        
         
         switch field {
         case "Name":
-            item.saleDescriptor = newString!
+            item.saleDescriptor_ = newString!
         case "MarketPlace":
             item.marketPlace = newString!
         case "Buy Date" :

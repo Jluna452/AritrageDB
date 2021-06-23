@@ -10,11 +10,11 @@
         <attribute name="otherFees" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="profitable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="saleDescriptor" optional="YES" attributeType="String"/>
+        <attribute name="saleDescriptor_" optional="YES" attributeType="String"/>
         <attribute name="sellDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="shippingFees" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="SaleItem" positionX="-63" positionY="-18" width="128" height="14"/>
+        <element name="SaleItem" positionX="-63" positionY="-18" width="128" height="209"/>
     </elements>
 </model>

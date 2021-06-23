@@ -19,7 +19,7 @@ struct TransactionChooserView: View {
             List{
                 ForEach(ArbitrageDatabase.shared.getAllItems()){ item in
 //                    saleView(num:item)
-                    Text("\(item)")
+                    Text("\(item.sellDescriptor)")
                     
                 }
             }
@@ -32,19 +32,19 @@ struct TransactionChooserView: View {
     
     
     
-    init(){
-        ArbitrageDatabase.shared.createNewItem()
-        ArbitrageDatabase.shared.createNewItem()
-        ArbitrageDatabase.shared.createNewItem()
-        ArbitrageDatabase.shared.createNewItem()
-    }
+//    init(){
+//        ArbitrageDatabase.shared.createNewItem()
+//        ArbitrageDatabase.shared.createNewItem()
+//        ArbitrageDatabase.shared.createNewItem()
+//        ArbitrageDatabase.shared.createNewItem()
+//    }
     
     var newEntryButton: some View {
         Button("New"){
             showNewEntry = true
         }
         .sheet(isPresented: $showNewEntry){
-            NewEntryView()
+            NewEntryView(isPresented: $showNewEntry)
         }
     }
     
