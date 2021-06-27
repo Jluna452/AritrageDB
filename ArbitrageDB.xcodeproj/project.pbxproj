@@ -68,6 +68,8 @@
 		17B551E9267ED3DF001B2900 /* ArbitrageDB */ = {
 			isa = PBXGroup;
 			children = (
+				173FE12B2682D8E600DB120F /* ViewModel.swift */,
+				17BC40362681885500A1F97F /* DatabaseManager.swift */,
 				17BC403E268278EA00A1F97F /* SaleItemCoreData */,
 				17B551EA267ED3DF001B2900 /* AppDelegate.swift */,
 				17B551EC267ED3DF001B2900 /* SceneDelegate.swift */,
@@ -78,8 +80,6 @@
 				17B551FB267ED3E0001B2900 /* Info.plist */,
 				17B551F0267ED3DF001B2900 /* ArbitrageDB.xcdatamodeld */,
 				17B551F5267ED3E0001B2900 /* Preview Content */,
-				17BC40362681885500A1F97F /* DatabaseManager.swift */,
-				173FE12B2682D8E600DB120F /* ViewModel.swift */,
 			);
 			path = ArbitrageDB;
 			sourceTree = "<group>";
