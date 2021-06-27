@@ -10,41 +10,33 @@ import UIKit
 import CoreData
 
 struct TransactionChooserView: View {
-//    @ObservedObject var arbitrageDB:ArbitrageDatabase
-//    @FetchRequest var items: FetchedResults<SaleItem>
-    
-
+    @ObservedObject var viewModel:ViewModel
     var body: some View {
         NavigationView {
             List{
-                ForEach(ArbitrageDatabase.shared.getAllItems()){ item in
-//                    saleView(num:item)
-                    Text("\(item.sellDescriptor)")
-                    
+                ForEach(viewModel.getAllSales){ item in
+                    NavigationLink(item.sellDescriptor, destination: saleView(item: item)
+                                    .navigationBarTitle(item.sellDescriptor))
+                    }
+                .onDelete { del in
+                    del.map { viewModel.getAllSales[$0] }.forEach { sale in
+                        viewModel.deleteSale(saleItem: sale)
+                    }
                 }
             }
+        
             .navigationBarTitle("Recent Transactions")
             .navigationBarItems(trailing: newEntryButton)
         }
-
-
     }
     
-    
-    
-//    init(){
-//        ArbitrageDatabase.shared.createNewItem()
-//        ArbitrageDatabase.shared.createNewItem()
-//        ArbitrageDatabase.shared.createNewItem()
-//        ArbitrageDatabase.shared.createNewItem()
-//    }
     
     var newEntryButton: some View {
         Button("New"){
             showNewEntry = true
         }
         .sheet(isPresented: $showNewEntry){
-            NewEntryView(isPresented: $showNewEntry)
+            NewEntryView(viewModel: viewModel, isPresented: $showNewEntry)
         }
     }
     
@@ -53,31 +45,30 @@ struct TransactionChooserView: View {
 
 
 
-//
-//struct saleView: View {
-//    @FetchRequest(fetchRequest: SaleItem.fetchRequest()) var saleItem: FetchedResults<SaleItem>
-//    
-//    
-//    var body: some View {
-//        RoundedRectangle(cornerRadius: 20)
-//            .frame(width: 350, height: 125)
-//            .foregroundColor(Color(UIColor.systemGray5))
-//            .overlay(
-//                HStack{
-//                    Text("Sale! \(num.saleDescriptor)")
-//                     .padding()
-//                    Text("\(num.entryDate)")
-//                }
-//
-//            )
-//
-//    }
-//    
-//    var num: SaleItem
-//}
-//
-//
-//
+
+struct saleView: View {
+    let item:SaleItem
+    
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 20)
+            .frame(width: 350, height: 125)
+            .foregroundColor(Color(UIColor.systemGray2))
+            .overlay(
+                HStack{
+                    Text("Sale! \(item.grossTotal)")
+                     .padding()
+                    Text("\(item.sellDescriptor)")
+                }
+
+            )
+
+    }
+
+}
+
+
+
 
 
 

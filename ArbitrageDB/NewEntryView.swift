@@ -8,33 +8,76 @@
 import SwiftUI
 
 struct NewEntryView: View {
+    @ObservedObject var viewModel:ViewModel
+    
     var body: some View {
-//        Section(header: Text("New Entry")){
-//
-//        }
   
-        NavigationView{
-            ScrollView{
-                textFieldView(placeHolder: "Sale Item Name", fieldName: "Name")
-                DatePicker("Enter Buy Date", selection: $sellDate, displayedComponents: .date)
-                    .datePickerStyle(WheelDatePickerStyle())
-                DatePicker("Enter Sell Date", selection: $sellDate, displayedComponents: .date)
-                    .datePickerStyle(WheelDatePickerStyle())
-                textFieldView(placeHolder: "Sale Item Price", fieldName: "Price")
-                textFieldView(placeHolder: "Sale Item Profit", fieldName: "Profit")
-            }
+        NavigationView {
+            ScrollView {
+//                textFieldView(placeHolder: "Sale Item Name", fieldName: "Name", data: name)
 
+//                textFieldView(placeHolder: "Sale Item Price", fieldName: "Price", data: price)
+//                textFieldView(placeHolder: "Sale Item Profit", fieldName: "Profit", data:profit)
                 
+                Group{
+                    VStack{
+                        Text("Name")
+                            .font(.headline)
+                        TextField("Sale Item Name", text: $name)
+                        { isEditing in
+                            } onCommit: {
+                            }
+                        .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .disableAutocorrection(true)
+                            .border(Color(UIColor.separator))
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10.0)
+                    }
+                    VStack{
+                        Text("Price")
+                            .font(.headline)
+                        TextField("Sale Item Price", text: $price)
+                        { isEditing in
+                            } onCommit: {
+                            }
+                        .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .disableAutocorrection(true)
+                            .border(Color(UIColor.separator))
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10.0)
+                    }
+                    VStack{
+                        Text("Profit")
+                            .font(.headline)
+                        TextField("Sale Item Profit", text: $profit)
+                        { isEditing in
+                            } onCommit: {
+                            }
+                        .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .disableAutocorrection(true)
+                            .border(Color(UIColor.separator))
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10.0)
+                    }
+                    
+                }
 
-            
+            }
             .navigationBarTitle("New Entry")
             .navigationBarItems(leading: cancel, trailing: done)
         }
-
+        DatePicker("Enter Buy Date", selection: $buyDate, displayedComponents: .date)
+            .datePickerStyle(WheelDatePickerStyle())
+        DatePicker("Enter Sell Date", selection: $sellDate, displayedComponents: .date)
+            .datePickerStyle(WheelDatePickerStyle())
         
     }
     
- @State var sellDate = Date()
+    @State var sellDate = Date()
+    @State var buyDate = Date()
+    @State var name:String = ""
+    @State var price:String = ""
+    @State var profit:String = ""
     
     @Binding var isPresented: Bool
     
@@ -46,6 +89,9 @@ struct NewEntryView: View {
     
     var done: some View {
         Button("Done") {
+//            VM.storeNewObject(sellDescriptor: name, buyDate: buyDate, sellDate: sellDate)
+            viewModel.storeNewSale(sellDescriptor: name, buyDate: buyDate, sellDate: sellDate)
+            self.isPresented = false
         }
     }
 }
@@ -54,32 +100,30 @@ struct NewEntryView: View {
 
 
 
-
-struct textFieldView: View {
-    var body: some View {
-        VStack{
-            Text(fieldName)
-                .font(.headline)
-            TextField(placeHolder, text: $data)
-            { isEditing in
-        //                    self.isEditing = isEditing
-                } onCommit: {
-        //                    validate(name: username)
-                    
-                }
-            .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .disableAutocorrection(true)
-                .border(Color(UIColor.separator))
-                .background(Color(UIColor.systemGray5))
-                .cornerRadius(10.0)
-        }
-        
-    }
-
-    var placeHolder: String
-    var fieldName: String
-    @State var data:String = " "
-}
+//
+//struct textFieldView: View {
+//    var body: some View {
+//        VStack{
+//            Text(fieldName)
+//                .font(.headline)
+//            TextField(placeHolder, text: $data)
+//            { isEditing in
+//                } onCommit: {
+//                }
+//            .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                .disableAutocorrection(true)
+//                .border(Color(UIColor.separator))
+//                .background(Color(UIColor.systemGray5))
+//                .cornerRadius(10.0)
+//        }
+//
+//    }
+//
+//    var placeHolder: String
+//    var fieldName: String
+//    @State var data:String
+////    var isEditing = false
+//}
 
 
 
