@@ -14,8 +14,8 @@ class ViewModel: ObservableObject {
 //        DatabaseManager.shared.
     }
     
-    func storeNewSale(sellDescriptor:String, buyDate:Date, sellDate:Date) {
-        db.createNewItem(sellDescriptor:sellDescriptor, buyDate:buyDate, sellDate:sellDate)
+    func storeNewSale(sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String) {
+        db.createNewItem(sellDescriptor:sellDescriptor, buyDate:buyDate, sellDate:sellDate, price:price, profit: toCurrency(entry: profit))
     }
     
     func deleteSale(saleItem:SaleItem){
@@ -26,4 +26,12 @@ class ViewModel: ObservableObject {
         db.getAllItems
     }
 
+    
+    func toCurrency(entry:String) -> Float {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        return formatter.number(from: entry)?.floatValue ?? 0.0
+    }
+    
 }

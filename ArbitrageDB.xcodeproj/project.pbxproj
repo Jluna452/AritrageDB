@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		171B135F267FE4AC00D877E2 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B135E267FE4AC00D877E2 /* NewEntryView.swift */; };
+		171F02F726E013F800BB7914 /* SaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171F02F626E013F800BB7914 /* SaleView.swift */; };
 		173FE12C2682D8E600DB120F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173FE12B2682D8E600DB120F /* ViewModel.swift */; };
 		17B551EB267ED3DF001B2900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B551EA267ED3DF001B2900 /* AppDelegate.swift */; };
 		17B551ED267ED3DF001B2900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B551EC267ED3DF001B2900 /* SceneDelegate.swift */; };
@@ -19,10 +20,12 @@
 		17BC40372681885500A1F97F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BC40362681885500A1F97F /* DatabaseManager.swift */; };
 		17BC403C268278DA00A1F97F /* SaleItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BC403A268278DA00A1F97F /* SaleItem+CoreDataClass.swift */; };
 		17BC403D268278DA00A1F97F /* SaleItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BC403B268278DA00A1F97F /* SaleItem+CoreDataProperties.swift */; };
+		17C1323A268FF7F7009BF3D2 /* homeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C13239268FF7F7009BF3D2 /* homeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		171B135E267FE4AC00D877E2 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
+		171F02F626E013F800BB7914 /* SaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleView.swift; sourceTree = "<group>"; };
 		173FE12B2682D8E600DB120F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		17B551E7267ED3DF001B2900 /* ArbitrageDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArbitrageDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B551EA267ED3DF001B2900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		17BC40362681885500A1F97F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		17BC403A268278DA00A1F97F /* SaleItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaleItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		17BC403B268278DA00A1F97F /* SaleItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaleItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		17C13239268FF7F7009BF3D2 /* homeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 		17B551E9267ED3DF001B2900 /* ArbitrageDB */ = {
 			isa = PBXGroup;
 			children = (
+				17C13239268FF7F7009BF3D2 /* homeView.swift */,
 				173FE12B2682D8E600DB120F /* ViewModel.swift */,
 				17BC40362681885500A1F97F /* DatabaseManager.swift */,
 				17BC403E268278EA00A1F97F /* SaleItemCoreData */,
@@ -80,6 +85,7 @@
 				17B551FB267ED3E0001B2900 /* Info.plist */,
 				17B551F0267ED3DF001B2900 /* ArbitrageDB.xcdatamodeld */,
 				17B551F5267ED3E0001B2900 /* Preview Content */,
+				171F02F626E013F800BB7914 /* SaleView.swift */,
 			);
 			path = ArbitrageDB;
 			sourceTree = "<group>";
@@ -173,12 +179,14 @@
 			files = (
 				17B551EB267ED3DF001B2900 /* AppDelegate.swift in Sources */,
 				17BC403D268278DA00A1F97F /* SaleItem+CoreDataProperties.swift in Sources */,
+				171F02F726E013F800BB7914 /* SaleView.swift in Sources */,
 				17BC403C268278DA00A1F97F /* SaleItem+CoreDataClass.swift in Sources */,
 				17B551ED267ED3DF001B2900 /* SceneDelegate.swift in Sources */,
 				173FE12C2682D8E600DB120F /* ViewModel.swift in Sources */,
 				17BC40372681885500A1F97F /* DatabaseManager.swift in Sources */,
 				17B551EF267ED3DF001B2900 /* TransactionChooserView.swift in Sources */,
 				17B551F2267ED3DF001B2900 /* ArbitrageDB.xcdatamodeld in Sources */,
+				17C1323A268FF7F7009BF3D2 /* homeView.swift in Sources */,
 				171B135F267FE4AC00D877E2 /* NewEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,23 +25,18 @@ struct DatabaseManager {
  
     }
     
-//    override init() {
-//        super.init()
-//        self.getAllItemsFunc()
-//    }
-    
     init() {
         getAllItemsFunc()
     }
     
     
-    mutating func createNewItem(sellDescriptor:String, buyDate:Date, sellDate:Date){
+    mutating func createNewItem(sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:Float){
         let newItem = SaleItem(context: context)
         newItem.sellDescriptor = sellDescriptor
         newItem.buyDate = buyDate
         newItem.entryDate = Date()
         newItem.sellDate = sellDate
-        newItem.grossTotal = 12.0
+        newItem.grossTotal = profit
         
         
         do{
@@ -102,5 +97,6 @@ struct DatabaseManager {
             //handle
         }
     }
-    
 }
+
+

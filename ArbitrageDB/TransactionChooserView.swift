@@ -7,27 +7,35 @@
 
 import SwiftUI
 import UIKit
-import CoreData
 
 struct TransactionChooserView: View {
     @ObservedObject var viewModel:ViewModel
+//    @Binding var selection:Int
+    
     var body: some View {
-        NavigationView {
-            List{
-                ForEach(viewModel.getAllSales){ item in
-                    NavigationLink(item.sellDescriptor, destination: saleView(item: item)
-                                    .navigationBarTitle(item.sellDescriptor))
-                    }
-                .onDelete { del in
-                    del.map { viewModel.getAllSales[$0] }.forEach { sale in
-                        viewModel.deleteSale(saleItem: sale)
+        TabView{
+            NavigationView {
+                List{
+                    ForEach(viewModel.getAllSales){ item in
+                        NavigationLink(item.sellDescriptor, destination: saleView(item: item)
+                                        .navigationBarTitle(item.sellDescriptor))
+                        }
+                    .onDelete { del in
+                        del.map { viewModel.getAllSales[$0] }.forEach { sale in
+                            viewModel.deleteSale(saleItem: sale)
+                        }
                     }
                 }
+                .navigationBarTitle("Recent Transactions")
+                .navigationBarItems(trailing: newEntryButton)
             }
-        
-            .navigationBarTitle("Recent Transactions")
-            .navigationBarItems(trailing: newEntryButton)
+            .tabItem {
+                Image(systemName: "list.bullet")
+                Text("Sales")
+            }
+            .tag(1)
         }
+
     }
     
     
@@ -42,42 +50,6 @@ struct TransactionChooserView: View {
     
     @State var showNewEntry: Bool = false
 }
-
-
-
-
-struct saleView: View {
-    let item:SaleItem
-    
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 20)
-            .frame(width: 350, height: 125)
-            .foregroundColor(Color(UIColor.systemGray2))
-            .overlay(
-                HStack{
-                    Text("Sale! \(item.grossTotal)")
-                     .padding()
-                    Text("\(item.sellDescriptor)")
-                }
-
-            )
-
-    }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

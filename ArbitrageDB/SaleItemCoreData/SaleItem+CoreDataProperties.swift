@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 
 extension SaleItem {
@@ -35,7 +36,8 @@ extension SaleItem {
     }
     
     var itemPhoto: Data {
-        get { itemPhoto_! }
+//        get { itemPhoto_ ?? Image(systemName: "camera") }
+        get { itemPhoto_!}
         set { itemPhoto_ = newValue }
     }
     

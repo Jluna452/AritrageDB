@@ -14,11 +14,7 @@ struct NewEntryView: View {
   
         NavigationView {
             ScrollView {
-//                textFieldView(placeHolder: "Sale Item Name", fieldName: "Name", data: name)
 
-//                textFieldView(placeHolder: "Sale Item Price", fieldName: "Price", data: price)
-//                textFieldView(placeHolder: "Sale Item Profit", fieldName: "Profit", data:profit)
-                
                 Group{
                     VStack{
                         Text("Name")
@@ -39,7 +35,9 @@ struct NewEntryView: View {
                         TextField("Sale Item Price", text: $price)
                         { isEditing in
                             } onCommit: {
+                                
                             }
+                        .keyboardType(.decimalPad)
                         .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .disableAutocorrection(true)
                             .border(Color(UIColor.separator))
@@ -53,6 +51,7 @@ struct NewEntryView: View {
                         { isEditing in
                             } onCommit: {
                             }
+                        .keyboardType(.decimalPad)
                         .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .disableAutocorrection(true)
                             .border(Color(UIColor.separator))
@@ -61,23 +60,24 @@ struct NewEntryView: View {
                     }
                     
                 }
+                DatePicker("Enter Buy Date", selection: $buyDate, displayedComponents: .date)
+                    .datePickerStyle(WheelDatePickerStyle())
+                DatePicker("Enter Sell Date", selection: $sellDate, displayedComponents: .date)
+                    .datePickerStyle(WheelDatePickerStyle())
 
             }
             .navigationBarTitle("New Entry")
             .navigationBarItems(leading: cancel, trailing: done)
         }
-        DatePicker("Enter Buy Date", selection: $buyDate, displayedComponents: .date)
-            .datePickerStyle(WheelDatePickerStyle())
-        DatePicker("Enter Sell Date", selection: $sellDate, displayedComponents: .date)
-            .datePickerStyle(WheelDatePickerStyle())
+
         
     }
     
     @State var sellDate = Date()
     @State var buyDate = Date()
     @State var name:String = ""
-    @State var price:String = ""
-    @State var profit:String = ""
+    @State var price:String = "0.0"
+    @State var profit:String = "0.0"
     
     @Binding var isPresented: Bool
     
@@ -89,8 +89,7 @@ struct NewEntryView: View {
     
     var done: some View {
         Button("Done") {
-//            VM.storeNewObject(sellDescriptor: name, buyDate: buyDate, sellDate: sellDate)
-            viewModel.storeNewSale(sellDescriptor: name, buyDate: buyDate, sellDate: sellDate)
+            viewModel.storeNewSale(sellDescriptor: name, buyDate: buyDate, sellDate: sellDate, price: price, profit: profit)
             self.isPresented = false
         }
     }
