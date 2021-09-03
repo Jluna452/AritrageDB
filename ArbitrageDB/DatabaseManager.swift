@@ -30,14 +30,14 @@ struct DatabaseManager {
     }
     
     
-    mutating func createNewItem(sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:Float){
+    mutating func createNewItem(sellDescriptor:String, buyDate:Date, sellDate:Date, price:Float, profit:Float, shippingFees: Float, miscFee: Float, profitable: Bool ){
         let newItem = SaleItem(context: context)
         newItem.sellDescriptor = sellDescriptor
         newItem.buyDate = buyDate
         newItem.entryDate = Date()
         newItem.sellDate = sellDate
         newItem.grossTotal = profit
-        
+        newItem.profitable = profitable
         
         do{
             try context.save()
@@ -60,7 +60,7 @@ struct DatabaseManager {
     }
     
     
-    mutating func update(item:SaleItem, newString:String?, newFloat: Float?, newInt:Int16?, newDate:Date?, field:String){
+    mutating func update(item:SaleItem,sellDescriptor:String, buyDate:Date, sellDate:Date, price:Float, profit:Float, shippingFees: Float, miscFee: Float, profitable: Bool){
         
 //        switch field {
 //        case "Name":

@@ -10,15 +10,17 @@ import UIKit
 
 struct TransactionChooserView: View {
     @ObservedObject var viewModel:ViewModel
-//    @Binding var selection:Int
     
     var body: some View {
         TabView{
             NavigationView {
                 List{
                     ForEach(viewModel.getAllSales){ item in
-                        NavigationLink(item.sellDescriptor, destination: saleView(item: item)
-                                        .navigationBarTitle(item.sellDescriptor))
+                        NavigationLink(destination: saleView(item: item, viewModel: viewModel)){
+                            saleItemCard(item: item)
+                        }
+                        
+                        
                         }
                     .onDelete { del in
                         del.map { viewModel.getAllSales[$0] }.forEach { sale in
@@ -28,6 +30,8 @@ struct TransactionChooserView: View {
                 }
                 .navigationBarTitle("Recent Transactions")
                 .navigationBarItems(trailing: newEntryButton)
+                .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
+                .edgesIgnoringSafeArea(.all)
             }
             .tabItem {
                 Image(systemName: "list.bullet")

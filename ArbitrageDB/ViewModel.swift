@@ -10,12 +10,28 @@ import Foundation
 class ViewModel: ObservableObject {
     @Published private var db = DatabaseManager()
 //    Intent:
-    func getItemDesciptor(){
-//        DatabaseManager.shared.
+    func getItemDesciptor(){    }
+    
+    func storeNewSale(sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String, shippingFee: String, miscFees:String) {
+        let formattedPofit = toCurrency(entry: profit)
+        let formattedPrice = toCurrency(entry: price)
+        let formattedShipFee = toCurrency(entry: shippingFee)
+        let formattedMisc = toCurrency(entry: miscFees)
+        let profitable:Bool = (profit > price) ? true : false
+        
+        
+        db.createNewItem(sellDescriptor:sellDescriptor, buyDate:buyDate, sellDate:sellDate, price:formattedPrice, profit: formattedPofit, shippingFees: formattedShipFee, miscFee: formattedMisc, profitable: profitable)
     }
     
-    func storeNewSale(sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String) {
-        db.createNewItem(sellDescriptor:sellDescriptor, buyDate:buyDate, sellDate:sellDate, price:price, profit: toCurrency(entry: profit))
+    func editSale(editItem:SaleItem, sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String, shippingFee: String, miscFees:String) {
+        let formattedPofit = toCurrency(entry: profit)
+        let formattedPrice = toCurrency(entry: price)
+        let formattedShipFee = toCurrency(entry: shippingFee)
+        let formattedMisc = toCurrency(entry: miscFees)
+        let profitable:Bool = (profit > price) ? true : false
+        
+        
+        db.update(item: editItem, sellDescriptor:sellDescriptor, buyDate:buyDate, sellDate:sellDate, price:formattedPrice, profit: formattedPofit, shippingFees: formattedShipFee, miscFee: formattedMisc, profitable: profitable)
     }
     
     func deleteSale(saleItem:SaleItem){
