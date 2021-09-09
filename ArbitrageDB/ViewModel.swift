@@ -54,10 +54,10 @@ class ViewModel: ObservableObject {
         saveData()
     }
     
-    func editSale(editItem:SaleItem, sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String) {
+    func editSale(editItem:SaleItem, sellDescriptor:String, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String) {
         editItem.sellDescriptor = (sellDescriptor != "") ? sellDescriptor : editItem.sellDescriptor
-        editItem.buyDate = buyDate
-        editItem.sellDate = sellDate
+//        editItem.buyDate = buyDate
+//        editItem.sellDate = sellDate
         editItem.grossTotal = (profit != "") ? toCurrency(entry: profit):editItem.grossTotal
         editItem.itemCost = (price != "") ? toCurrency(entry: price):editItem.itemCost
         editItem.shippingFees = (shippingFee != "") ? toCurrency(entry: shippingFee):editItem.shippingFees

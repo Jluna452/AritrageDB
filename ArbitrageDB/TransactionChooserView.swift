@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct TransactionChooserView: View {
-    @StateObject var viewModel:ViewModel
+    @ObservedObject var viewModel:ViewModel
     
     var body: some View {
         TabView{
@@ -54,11 +54,6 @@ struct TransactionChooserView: View {
     
     @State var showNewEntry: Bool = false
 }
-
-
-
-
-
 
 
 //struct ContentView_Previews: PreviewProvider {

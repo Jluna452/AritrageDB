@@ -13,7 +13,7 @@ import Combine
 struct editEntryView: View {
      var viewModel:ViewModel
     @ObservedObject var editItem:SaleItem
-
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -110,23 +110,13 @@ struct editEntryView: View {
                            
                 }
 
-
-                DatePicker("Enter Buy Date", selection: $buyDate, displayedComponents: .date)
-                    .datePickerStyle(WheelDatePickerStyle())
-                Divider()
-
-                DatePicker("Enter Sell Date", selection: $sellDate, displayedComponents: .date)
-                    .datePickerStyle(WheelDatePickerStyle())
-
             }
             .navigationBarTitle("Edit '\(editItem.sellDescriptor)'")
             .navigationBarItems(leading: cancel, trailing: done)
 
         }
     }
-    
-    @State var sellDate:Date = Date()
-    @State var buyDate:Date = Date()
+
     @State var name:String = ""
     @State var price:String = ""
     @State var profit:String = ""
@@ -145,7 +135,7 @@ struct editEntryView: View {
     
     var done: some View {
         Button("Done") {
-            viewModel.editSale(editItem:editItem, sellDescriptor: name, buyDate: buyDate, sellDate: sellDate, price: price, profit: profit, shippingFee: shippingFees, miscFees: miscFees, quantity: quantity)
+            viewModel.editSale(editItem:editItem, sellDescriptor: name, price: price, profit: profit, shippingFee: shippingFees, miscFees: miscFees, quantity: quantity)
             self.isPresented = false
         }
     }
