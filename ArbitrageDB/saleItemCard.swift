@@ -13,7 +13,7 @@ struct saleItemCard: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
-                .frame(width: 350, height: 125)
+                .frame(width: UIScreen.main.bounds.width - 75, height: 125)
                 .foregroundColor(Color(UIColor.systemBlue))
                 .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
                 .overlay(
