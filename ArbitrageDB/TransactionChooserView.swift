@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct TransactionChooserView: View {
-    @ObservedObject var viewModel:ViewModel
+    @StateObject var viewModel:ViewModel
     
     var body: some View {
         TabView{

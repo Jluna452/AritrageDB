@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct saleItemCard: View {
-    let item:SaleItem
+    @ObservedObject var item:SaleItem
     
     var body: some View {
         ZStack{

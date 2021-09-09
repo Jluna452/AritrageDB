@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ViewModel: ObservableObject {
-    @Published var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @Published var allItems:[SaleItem] = []
     
     init() {
@@ -22,6 +22,7 @@ class ViewModel: ObservableObject {
         }
         catch{
             //handle error here
+            print(error)
         }
     }
     
@@ -40,13 +41,7 @@ class ViewModel: ObservableObject {
         newItem.profitable = (newItem.grossTotal > newItem.itemCost) ? true : false
 //        newItem.quantity = Int16(quantity)!
        
-        do{
-            try context.save()
-        }
-        catch{
-            //handle
-        }
-
+        saveData()
         getAllItemsFunc()
     }
     
@@ -76,23 +71,25 @@ class ViewModel: ObservableObject {
         editItem.profitable = (editItem.grossTotal > editItem.itemCost) ? true : false
         editItem.quantity = editItem.quantity
         
-        do{
-            try context.save()
-        }
-        catch{
-            //handle
-        }
+        saveData()
+//        context.refresh(), mergeChanges: true)
+        context.refreshAllObjects() 
         
         getAllItemsFunc()
     }
     
     func delete(item:SaleItem){
         context.delete(item)
+        saveData()
+    }
+    
+    func saveData(){
         do{
             try context.save()
         }
         catch{
             //handle
+            print("Error when saving Data \(error)")
         }
     }
     

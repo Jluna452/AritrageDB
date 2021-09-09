@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct saleView: View {
-    let item:SaleItem
+    @ObservedObject var item:SaleItem
     let viewModel: ViewModel
 
     var body: some View {
