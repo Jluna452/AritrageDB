@@ -9,23 +9,30 @@ import Foundation
 import UIKit
 
 class ViewModel: ObservableObject {
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    @Published var allItems:[SaleItem] = []
+    private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    @Published public var allItems:[SaleItem] = []
     
     init() {
-        getAllItemsFunc()
+        getAllItems()
     }
 
-    func getAllItemsFunc(){
+    func getAllItems(){
         do{
             allItems = try context.fetch(SaleItem.fetchRequest())
         }
         catch{
             //handle error here
-            print(error)
+            print("Error in getALLItems \(error)")
         }
     }
     
+    
+    func toCurrency(entry:String) -> Float {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        return formatter.number(from: entry)?.floatValue ?? 0.0
+    }
 //    Intent:
     
     func storeNewSale(sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String) {
@@ -39,28 +46,15 @@ class ViewModel: ObservableObject {
         newItem.shippingFees = toCurrency(entry: shippingFee)
         newItem.otherFees = toCurrency(entry: miscFees)
         newItem.profitable = (newItem.grossTotal > newItem.itemCost) ? true : false
-//        newItem.quantity = Int16(quantity)!
+        
+        if let tmp = Int(quantity){
+            newItem.quantity = Int16(exactly: tmp) ?? 1
+        }
        
         saveData()
-        getAllItemsFunc()
     }
     
     func editSale(editItem:SaleItem, sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String) {
-        
-//        let newItem = SaleItem(context: context)
-//        newItem.sellDescriptor = (sellDescriptor != "") ? sellDescriptor : editItem.sellDescriptor
-//        newItem.buyDate = buyDate
-//        newItem.sellDate = sellDate
-//        newItem.grossTotal = (profit != "") ? toCurrency(entry: profit):editItem.grossTotal
-//        newItem.itemCost = (price != "") ? toCurrency(entry: price):editItem.itemCost
-//        newItem.shippingFees = (shippingFee != "") ? toCurrency(entry: shippingFee):editItem.shippingFees
-//        newItem.otherFees = (miscFees != "") ? toCurrency(entry: miscFees):editItem.otherFees
-//        newItem.profitable = (newItem.grossTotal > newItem.itemCost) ? true : false
-//        newItem.quantity = editItem.quantity
-        
-//        context.delete(editItem)
-                
-//        let newItem = SaleItem(context: context)
         editItem.sellDescriptor = (sellDescriptor != "") ? sellDescriptor : editItem.sellDescriptor
         editItem.buyDate = buyDate
         editItem.sellDate = sellDate
@@ -69,13 +63,12 @@ class ViewModel: ObservableObject {
         editItem.shippingFees = (shippingFee != "") ? toCurrency(entry: shippingFee):editItem.shippingFees
         editItem.otherFees = (miscFees != "") ? toCurrency(entry: miscFees):editItem.otherFees
         editItem.profitable = (editItem.grossTotal > editItem.itemCost) ? true : false
-        editItem.quantity = editItem.quantity
-        
+
+        if let tmp = Int(quantity){
+            editItem.quantity = Int16(exactly: tmp) ?? editItem.quantity
+        }
+
         saveData()
-//        context.refresh(), mergeChanges: true)
-        context.refreshAllObjects() 
-        
-        getAllItemsFunc()
     }
     
     func delete(item:SaleItem){
@@ -91,17 +84,6 @@ class ViewModel: ObservableObject {
             //handle
             print("Error when saving Data \(error)")
         }
+        getAllItems()
     }
-    
-    var getAllSales:[SaleItem]{
-        allItems
-    }
-    
-    func toCurrency(entry:String) -> Float {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 2
-        return formatter.number(from: entry)?.floatValue ?? 0.0
-    }
-    
 }

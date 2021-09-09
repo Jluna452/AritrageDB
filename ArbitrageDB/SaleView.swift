@@ -36,7 +36,7 @@ struct saleView: View {
             showEntry = true
         }
         .sheet(isPresented: $showEntry){
-            NewEntryView(viewModel: viewModel, isPresented: $showEntry)
+            editEntryView(viewModel: viewModel, editItem:item, isPresented: $showEntry)
         }
     }
 

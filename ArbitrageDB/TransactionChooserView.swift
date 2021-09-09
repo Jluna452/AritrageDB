@@ -15,7 +15,7 @@ struct TransactionChooserView: View {
         TabView{
             NavigationView {
                 List{
-                    ForEach(viewModel.getAllSales){ item in
+                    ForEach(viewModel.allItems){ item in
                         NavigationLink(destination: saleView(item: item, viewModel: viewModel)){
                             saleItemCard(item: item)
                         }
@@ -23,7 +23,7 @@ struct TransactionChooserView: View {
                         
                         }
                     .onDelete { del in
-                        del.map { viewModel.getAllSales[$0] }.forEach { sale in
+                        del.map { viewModel.allItems[$0] }.forEach { sale in
                             viewModel.delete(item: sale)
                         }
                     }
