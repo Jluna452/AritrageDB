@@ -144,7 +144,7 @@ struct NewEntryView: View {
     
     var done: some View {
         Button("Done") {
-            viewModel.storeNewSale(sellDescriptor: name, buyDate: buyDate, sellDate: sellDate, price: price, profit: profit, shippingFee: shippingFees, miscFees: miscFees)
+            viewModel.storeNewSale(sellDescriptor: name, buyDate: buyDate, sellDate: sellDate, price: price, profit: profit, shippingFee: shippingFees, miscFees: miscFees, quantity: quantity)
             self.isPresented = false
         }
     }

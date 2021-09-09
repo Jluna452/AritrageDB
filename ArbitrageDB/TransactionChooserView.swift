@@ -24,7 +24,7 @@ struct TransactionChooserView: View {
                         }
                     .onDelete { del in
                         del.map { viewModel.getAllSales[$0] }.forEach { sale in
-                            viewModel.deleteSale(saleItem: sale)
+                            viewModel.delete(item: sale)
                         }
                     }
                 }
