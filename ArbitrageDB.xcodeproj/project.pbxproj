@@ -12,6 +12,8 @@
 		171F02F726E013F800BB7914 /* SaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171F02F626E013F800BB7914 /* SaleView.swift */; };
 		173FE12C2682D8E600DB120F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173FE12B2682D8E600DB120F /* ViewModel.swift */; };
 		174B6BF326EA679C004CC295 /* editEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B6BF226EA679C004CC295 /* editEntryView.swift */; };
+		178FE7B126F1292C006E832C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FE7B026F1292C006E832C /* ImagePicker.swift */; };
+		178FE7B326F15176006E832C /* EntryFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FE7B226F15176006E832C /* EntryFields.swift */; };
 		17B551EB267ED3DF001B2900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B551EA267ED3DF001B2900 /* AppDelegate.swift */; };
 		17B551ED267ED3DF001B2900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B551EC267ED3DF001B2900 /* SceneDelegate.swift */; };
 		17B551EF267ED3DF001B2900 /* TransactionChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B551EE267ED3DF001B2900 /* TransactionChooserView.swift */; };
@@ -30,6 +32,8 @@
 		171F02F626E013F800BB7914 /* SaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleView.swift; sourceTree = "<group>"; };
 		173FE12B2682D8E600DB120F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		174B6BF226EA679C004CC295 /* editEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editEntryView.swift; sourceTree = "<group>"; };
+		178FE7B026F1292C006E832C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		178FE7B226F15176006E832C /* EntryFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFields.swift; sourceTree = "<group>"; };
 		17B551E7267ED3DF001B2900 /* ArbitrageDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArbitrageDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B551EA267ED3DF001B2900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17B551EC267ED3DF001B2900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 		17B551E9267ED3DF001B2900 /* ArbitrageDB */ = {
 			isa = PBXGroup;
 			children = (
+				178FE7B026F1292C006E832C /* ImagePicker.swift */,
 				17C13239268FF7F7009BF3D2 /* homeView.swift */,
 				173FE12B2682D8E600DB120F /* ViewModel.swift */,
 				17BC403E268278EA00A1F97F /* SaleItemCoreData */,
@@ -89,6 +94,7 @@
 				171F02F626E013F800BB7914 /* SaleView.swift */,
 				1714D69126E148AB0053A211 /* saleItemCard.swift */,
 				174B6BF226EA679C004CC295 /* editEntryView.swift */,
+				178FE7B226F15176006E832C /* EntryFields.swift */,
 			);
 			path = ArbitrageDB;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 				17BC403C268278DA00A1F97F /* SaleItem+CoreDataClass.swift in Sources */,
 				17B551ED267ED3DF001B2900 /* SceneDelegate.swift in Sources */,
 				173FE12C2682D8E600DB120F /* ViewModel.swift in Sources */,
+				178FE7B326F15176006E832C /* EntryFields.swift in Sources */,
+				178FE7B126F1292C006E832C /* ImagePicker.swift in Sources */,
 				17B551EF267ED3DF001B2900 /* TransactionChooserView.swift in Sources */,
 				17B551F2267ED3DF001B2900 /* ArbitrageDB.xcdatamodeld in Sources */,
 				17C1323A268FF7F7009BF3D2 /* homeView.swift in Sources */,

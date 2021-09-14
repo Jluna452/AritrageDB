@@ -35,11 +35,14 @@ extension SaleItem {
         set { entryDate_ = newValue}
     }
     
-    var itemPhoto: Data {
-//        get { itemPhoto_ ?? Image(systemName: "camera") }
-        get { itemPhoto_!}
-        set { itemPhoto_ = newValue }
-    }
+//    var itemPhoto: UIImage? {
+//        get { UIImage(data: itemPhoto_) }
+//        set {
+//            if let tmp = newValue{
+//                itemPhoto_ = tmp.pngData()
+//            }
+//        }
+//    }
     
     var sellDescriptor: String {
         get { sellDescriptor_ ?? "Blank descriptor" }
@@ -54,7 +57,7 @@ extension SaleItem {
     @NSManaged public var entryDate_: Date?
     @NSManaged public var grossTotal: Float
     @NSManaged public var itemCost: Float
-    @NSManaged public var itemPhoto_: Data?
+    @NSManaged public var image: Data
     @NSManaged public var marketPlace_: String?
     @NSManaged public var otherFees: Float
     @NSManaged public var profitable: Bool

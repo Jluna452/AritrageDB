@@ -10,7 +10,6 @@ import UIKit
 
 struct TransactionChooserView: View {
     @ObservedObject var viewModel:ViewModel
-    
     var body: some View {
         TabView{
             NavigationView {
@@ -41,7 +40,6 @@ struct TransactionChooserView: View {
         }
 
     }
-    
     
     var newEntryButton: some View {
         Button("New"){

@@ -21,7 +21,7 @@ struct editEntryView: View {
                     VStack{
                         Text("Name")
                             .font(.headline)
-                        TextField("\(editItem.sellDescriptor)", text: $name)
+                        TextField("\(editItem.sellDescriptor)", text: $entry.name)
                         { isEditing in
                             } onCommit: {
                             }
@@ -35,7 +35,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.itemCost, specifier: "%.2f")", text: $price)
+                        TextField("\(editItem.itemCost, specifier: "%.2f")", text: $entry.price)
                         { isEditing in
                             } onCommit: {
                                 
@@ -53,7 +53,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.grossTotal, specifier: "%.2f")", text: $profit)
+                        TextField("\(editItem.grossTotal, specifier: "%.2f")", text: $entry.profit)
                         { isEditing in
                             } onCommit: {
                             }
@@ -68,7 +68,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.shippingFees, specifier: "%.2f")", text: $shippingFees)
+                        TextField("\(editItem.shippingFees, specifier: "%.2f")", text: $entry.shippingFees)
                         { isEditing in
                             } onCommit: {
                             }
@@ -83,7 +83,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.otherFees, specifier: "%.2f")", text: $miscFees)
+                        TextField("\(editItem.otherFees, specifier: "%.2f")", text: $entry.miscFees)
                         { isEditing in
                             } onCommit: {
                             }
@@ -99,7 +99,7 @@ struct editEntryView: View {
                         Text("Quantity")
                             .font(.headline)
                             .fixedSize()
-                        TextField("\(editItem.quantity)", text: $quantity)
+                        TextField("\(editItem.quantity)", text: $entry.quantity)
                                     .keyboardType(.numberPad)
                             .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                                 .disableAutocorrection(true)
@@ -116,13 +116,8 @@ struct editEntryView: View {
 
         }
     }
-
-    @State var name:String = ""
-    @State var price:String = ""
-    @State var profit:String = ""
-    @State var miscFees:String = ""
-    @State var shippingFees:String = ""
-    @State var quantity: String = ""
+    
+    @State var entry = entryFields()
     
     
     @Binding var isPresented: Bool
@@ -135,7 +130,13 @@ struct editEntryView: View {
     
     var done: some View {
         Button("Done") {
-            viewModel.editSale(editItem:editItem, sellDescriptor: name, price: price, profit: profit, shippingFee: shippingFees, miscFees: miscFees, quantity: quantity)
+            viewModel.editSale(editItem: editItem,
+                               sellDescriptor: entry.name,
+                               price: entry.price,
+                               profit: entry.profit,
+                               shippingFee: entry.shippingFees,
+                               miscFees: entry.miscFees,
+                               quantity: entry.quantity)
             self.isPresented = false
         }
     }

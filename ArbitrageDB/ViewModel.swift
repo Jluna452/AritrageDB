@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class ViewModel: ObservableObject {
     private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -35,7 +36,7 @@ class ViewModel: ObservableObject {
     }
 //    Intent:
     
-    func storeNewSale(sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String) {
+    func storeNewSale(sellDescriptor:String, buyDate:Date, sellDate:Date, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String, image:UIImage?) {
         let newItem = SaleItem(context: context)
         newItem.sellDescriptor = sellDescriptor
         newItem.buyDate = buyDate
@@ -46,6 +47,11 @@ class ViewModel: ObservableObject {
         newItem.shippingFees = toCurrency(entry: shippingFee)
         newItem.otherFees = toCurrency(entry: miscFees)
         newItem.profitable = (newItem.grossTotal > newItem.itemCost) ? true : false
+
+        if let tmp = image{
+            newItem.image = tmp.pngData()!
+        }
+
         
         if let tmp = Int(quantity){
             newItem.quantity = Int16(exactly: tmp) ?? 1
@@ -56,8 +62,6 @@ class ViewModel: ObservableObject {
     
     func editSale(editItem:SaleItem, sellDescriptor:String, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String) {
         editItem.sellDescriptor = (sellDescriptor != "") ? sellDescriptor : editItem.sellDescriptor
-//        editItem.buyDate = buyDate
-//        editItem.sellDate = sellDate
         editItem.grossTotal = (profit != "") ? toCurrency(entry: profit):editItem.grossTotal
         editItem.itemCost = (price != "") ? toCurrency(entry: price):editItem.itemCost
         editItem.shippingFees = (shippingFee != "") ? toCurrency(entry: shippingFee):editItem.shippingFees

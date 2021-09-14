@@ -18,12 +18,23 @@ struct saleItemCard: View {
                 .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
                 .overlay(
                     HStack{
-                        Image("fall-leaves")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100, alignment: .center)
-                            .padding(.all, 20)
-                            .clipped()
+                        if let image = UIImage(data: item.image){
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100, height: 100, alignment: .center)
+                                .padding(.all, 20)
+                                .clipped()
+                        }
+                        else{
+                            Image("fall-leaves")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100, height: 100, alignment: .center)
+                                .padding(.all, 20)
+                                .clipped()
+                        }
+
                         VStack(alignment: .leading){
                             Text(item.sellDescriptor)
                                 .font(.system(size: 26, weight: .bold, design: .default))
