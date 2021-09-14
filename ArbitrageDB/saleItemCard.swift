@@ -14,25 +14,29 @@ struct saleItemCard: View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: UIScreen.main.bounds.width - 75, height: 125)
-                .foregroundColor(Color(UIColor.systemBlue))
+                .foregroundColor(item.profitable ? Color(UIColor.systemBlue):Color(UIColor.systemRed))
                 .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
                 .overlay(
                     HStack{
                         if let image = UIImage(data: item.image){
                             Image(uiImage: image)
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100, alignment: .center)
-                                .padding(.all, 20)
-                                .clipped()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(width: 100, height: 100, alignment: .center)
+//                                .padding(.all, 20)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+                                .rotationEffect(.degrees(-180))
                         }
                         else{
                             Image("fall-leaves")
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100, alignment: .center)
-                                .padding(.all, 20)
-                                .clipped()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(width: 100, height: 100, alignment: .center)
+//                                .padding(.all, 20)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+//                                .rotationEffect(.degrees(-180))
                         }
 
                         VStack(alignment: .leading){
@@ -46,12 +50,10 @@ struct saleItemCard: View {
                                 .foregroundColor(.white)
                                 .font(.system(size: 16, weight: .bold, design: .default))
                                 .padding(.top, 8)
-
                     }
                 )
         }
-    }
-        
+    } 
 }
 
 //struct saleItemCard_Previews: PreviewProvider {

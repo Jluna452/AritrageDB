@@ -117,7 +117,7 @@ struct editEntryView: View {
         }
     }
     
-    @State var entry = entryFields()
+    @State private var entry = entryFields()
     
     
     @Binding var isPresented: Bool
