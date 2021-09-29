@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import UIKit
 
 struct NewEntryView: View {
     @ObservedObject var viewModel:ViewModel
@@ -16,16 +17,23 @@ struct NewEntryView: View {
             ScrollView {
                 Group{
                     VStack{
-                        pickImage
-                            .frame(width: UIScreen.main.bounds.width - 75, height: 125)
-                            .foregroundColor(Color(UIColor.systemBlue))
-                            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+                        RoundedRectangle(cornerRadius: 20)
+                            .overlay(
+                                ZStack{
+                                    if let tmp = entry.image {
+                                        Image(uiImage: tmp)
+                                            .resizable()
+                                            .cornerRadius(20, antialiased: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                                    }
+                                
+                                    pickImage
+                                }
+                            )
+                            .frame(width: UIScreen.main.bounds.width - 75, height: 300)
+                            
                         Text("Name")
                             .font(.headline)
                         TextField("Item Name", text: $entry.name)
-                        { isEditing in
-                            } onCommit: {
-                            }
                         .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .disableAutocorrection(false)
                             .background(Color(UIColor.systemGray5))
@@ -37,10 +45,6 @@ struct NewEntryView: View {
                             .fixedSize()
                         Text("$")
                         TextField("0.00", text: $entry.price)
-                        { isEditing in
-                            } onCommit: {
-                                
-                            }
                         .keyboardType(.numberPad)
                         .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                             .disableAutocorrection(true)
@@ -55,9 +59,6 @@ struct NewEntryView: View {
                             .fixedSize()
                         Text("$")
                         TextField("0.00", text: $entry.profit)
-                        { isEditing in
-                            } onCommit: {
-                            }
                         .keyboardType(.numberPad)
                         .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                             .disableAutocorrection(true)
@@ -70,9 +71,6 @@ struct NewEntryView: View {
                             .fixedSize()
                         Text("$")
                         TextField("0.00", text: $entry.shippingFees)
-                        { isEditing in
-                            } onCommit: {
-                            }
                         .keyboardType(.numberPad)
                         .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                             .disableAutocorrection(true)
@@ -85,9 +83,6 @@ struct NewEntryView: View {
                             .fixedSize()
                         Text("$")
                         TextField("0.00", text: $entry.miscFees)
-                        { isEditing in
-                            } onCommit: {
-                            }
                         .keyboardType(.numberPad)
                         .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                             .disableAutocorrection(true)
@@ -136,25 +131,25 @@ struct NewEntryView: View {
     @State private var showImagePicker = false
     @State private var imagePickerSourceType = UIImagePickerController.SourceType.photoLibrary
     
-    private var pickImage: some View {
+    var pickImage:some View {
         HStack {
-            Image(systemName: "photo").imageScale(.large).foregroundColor(.accentColor).onTapGesture {
-                self.imagePickerSourceType = .photoLibrary
-                self.showImagePicker = true
-            }
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                Image(systemName: "camera").imageScale(.large).foregroundColor(.accentColor).onTapGesture {
-                    self.imagePickerSourceType = .camera
+                Image(systemName: "photo").imageScale(.large).foregroundColor(.accentColor).onTapGesture {
+                    self.imagePickerSourceType = .photoLibrary
                     self.showImagePicker = true
                 }
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    Image(systemName: "camera").imageScale(.large).foregroundColor(.accentColor).onTapGesture {
+                        self.imagePickerSourceType = .camera
+                        self.showImagePicker = true
+                    }
+                }
             }
-        }
-        .sheet(isPresented: $showImagePicker) {
-            ImagePicker(sourceType: self.imagePickerSourceType) { image in
-                entry.image = image
-                self.showImagePicker = false
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(sourceType: self.imagePickerSourceType) { image in
+                    entry.image = image
+                    self.showImagePicker = false
+                }
             }
-        }
     }
     
     var cancel: some View {

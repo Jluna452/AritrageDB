@@ -17,5 +17,5 @@ struct entryFields {
     var miscFees:String = ""
     var shippingFees:String = ""
     var quantity: String = ""
-    var image:UIImage?
+    var image:UIImage? = nil
 }

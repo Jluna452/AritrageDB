@@ -19,6 +19,18 @@ struct editEntryView: View {
             ScrollView {
                 Group{
                     VStack{
+                        RoundedRectangle(cornerRadius: 20)
+                            .overlay(
+                                ZStack{
+                                    if let image = UIImage(data: editItem.image){
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .cornerRadius(20, antialiased: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                                    }
+                                    pickImage
+                                }
+                            )
+                            .frame(width: UIScreen.main.bounds.width - 75, height: 300)
                         Text("Name")
                             .font(.headline)
                         TextField("\(editItem.sellDescriptor)", text: $entry.name)
@@ -35,7 +47,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.itemCost, specifier: "%.2f")", text: $entry.price)
+                        TextField("\(editItem.itemCost)", text: $entry.price)
                         { isEditing in
                             } onCommit: {
                                 
@@ -53,7 +65,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.grossTotal, specifier: "%.2f")", text: $entry.profit)
+                        TextField("\(editItem.grossTotal)", text: $entry.profit)
                         { isEditing in
                             } onCommit: {
                             }
@@ -68,7 +80,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.shippingFees, specifier: "%.2f")", text: $entry.shippingFees)
+                        TextField("\(editItem.shippingFees)", text: $entry.shippingFees)
                         { isEditing in
                             } onCommit: {
                             }
@@ -83,7 +95,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.otherFees, specifier: "%.2f")", text: $entry.miscFees)
+                        TextField("\(editItem.otherFees)", text: $entry.miscFees)
                         { isEditing in
                             } onCommit: {
                             }
@@ -136,8 +148,35 @@ struct editEntryView: View {
                                profit: entry.profit,
                                shippingFee: entry.shippingFees,
                                miscFees: entry.miscFees,
-                               quantity: entry.quantity)
+                               quantity: entry.quantity,
+                               image: entry.image)
             self.isPresented = false
         }
     }
+    
+    @State private var showImagePicker = false
+    @State private var imagePickerSourceType = UIImagePickerController.SourceType.photoLibrary
+    
+    var pickImage:some View {
+        HStack {
+                Image(systemName: "photo").imageScale(.large).foregroundColor(.accentColor).onTapGesture {
+                    self.imagePickerSourceType = .photoLibrary
+                    self.showImagePicker = true
+                }
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    Image(systemName: "camera").imageScale(.large).foregroundColor(.accentColor).onTapGesture {
+                        self.imagePickerSourceType = .camera
+                        self.showImagePicker = true
+                    }
+                }
+            }
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(sourceType: self.imagePickerSourceType) { image in
+                    entry.image = image
+                    self.showImagePicker = false
+                }
+            }
+    }
 }
+
+

@@ -15,7 +15,7 @@ extension SaleItem {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<SaleItem> {
         let request = NSFetchRequest<SaleItem>(entityName: "SaleItem")
-        request.sortDescriptors = [NSSortDescriptor(key: "entryDate_", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "sellDate_", ascending: false)]
 //        request.predicate = predicate
         return request
     }

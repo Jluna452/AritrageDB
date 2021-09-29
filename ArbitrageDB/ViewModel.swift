@@ -46,7 +46,7 @@ class ViewModel: ObservableObject {
         newItem.itemCost = toCurrency(entry: price)
         newItem.shippingFees = toCurrency(entry: shippingFee)
         newItem.otherFees = toCurrency(entry: miscFees)
-        newItem.profitable = (newItem.grossTotal > newItem.itemCost) ? true : false
+        newItem.profitable = (newItem.grossTotal > newItem.itemCost + newItem.shippingFees + newItem.otherFees) ? true : false
 
         if let tmp = image{
             newItem.image = tmp.pngData()!
@@ -60,16 +60,20 @@ class ViewModel: ObservableObject {
         saveData()
     }
     
-    func editSale(editItem:SaleItem, sellDescriptor:String, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String) {
+    func editSale(editItem:SaleItem, sellDescriptor:String, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String, image:UIImage?) {
         editItem.sellDescriptor = (sellDescriptor != "") ? sellDescriptor : editItem.sellDescriptor
         editItem.grossTotal = (profit != "") ? toCurrency(entry: profit):editItem.grossTotal
         editItem.itemCost = (price != "") ? toCurrency(entry: price):editItem.itemCost
         editItem.shippingFees = (shippingFee != "") ? toCurrency(entry: shippingFee):editItem.shippingFees
         editItem.otherFees = (miscFees != "") ? toCurrency(entry: miscFees):editItem.otherFees
-        editItem.profitable = (editItem.grossTotal > editItem.itemCost) ? true : false
+        editItem.profitable = (editItem.grossTotal > editItem.itemCost + editItem.shippingFees + editItem.otherFees)  ? true : false
 
         if let tmp = Int(quantity){
             editItem.quantity = Int16(exactly: tmp) ?? editItem.quantity
+        }
+        
+        if let tmp = image{
+            editItem.image = tmp.pngData()!
         }
 
         saveData()

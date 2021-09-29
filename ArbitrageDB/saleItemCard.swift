@@ -26,7 +26,7 @@ struct saleItemCard: View {
 //                                .padding(.all, 20)
                                 .clipShape(Circle())
                                 .shadow(radius: 10)
-                                .rotationEffect(.degrees(-180))
+//                                .rotationEffect(.degrees(-180))
                         }
                         else{
                             Image("fall-leaves")
