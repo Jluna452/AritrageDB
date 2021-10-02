@@ -34,11 +34,8 @@ struct editEntryView: View {
                         Text("Name")
                             .font(.headline)
                         TextField("\(editItem.sellDescriptor)", text: $entry.name)
-                        { isEditing in
-                            } onCommit: {
-                            }
                         .frame(width: UIScreen.main.bounds.width - 30, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .disableAutocorrection(false)
+                            .disableAutocorrection(true)
                             .background(Color(UIColor.systemGray5))
                             .cornerRadius(10.0)
                     }
@@ -46,12 +43,9 @@ struct editEntryView: View {
                         Text("Price")
                             .font(.headline)
                             .fixedSize()
+                        Spacer()
                         Text("$")
                         TextField("\(editItem.initialCost)", text: $entry.price)
-                        { isEditing in
-                            } onCommit: {
-                                
-                            }
                         .keyboardType(.numberPad)
                         .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                             .disableAutocorrection(true)
@@ -64,11 +58,9 @@ struct editEntryView: View {
                         Text("Profit")
                             .font(.headline)
                             .fixedSize()
+                        Spacer()
                         Text("$")
                         TextField("\(editItem.sellPrice)", text: $entry.profit)
-                        { isEditing in
-                            } onCommit: {
-                            }
                         .keyboardType(.numberPad)
                         .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                             .disableAutocorrection(true)
@@ -79,11 +71,9 @@ struct editEntryView: View {
                         Text("Shipping Fees")
                             .font(.headline)
                             .fixedSize()
+                        Spacer()
                         Text("$")
                         TextField("\(editItem.shippingFees)", text: $entry.shippingFees)
-                        { isEditing in
-                            } onCommit: {
-                            }
                         .keyboardType(.numberPad)
                         .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                             .disableAutocorrection(true)
@@ -94,11 +84,9 @@ struct editEntryView: View {
                         Text("Miscellaneous Fees")
                             .font(.headline)
                             .fixedSize()
+                        Spacer()
                         Text("$")
                         TextField("\(editItem.otherFees)", text: $entry.miscFees)
-                        { isEditing in
-                            } onCommit: {
-                            }
                         .keyboardType(.numberPad)
                         .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
                             .disableAutocorrection(true)
@@ -111,6 +99,7 @@ struct editEntryView: View {
                         Text("Quantity")
                             .font(.headline)
                             .fixedSize()
+                        Spacer()
                         TextField("\(editItem.quantity)", text: $entry.quantity)
                                     .keyboardType(.numberPad)
                             .frame(width: UIScreen.main.bounds.width - 300, height: 45, alignment: .leading)
@@ -159,12 +148,18 @@ struct editEntryView: View {
     
     var pickImage:some View {
         HStack {
-                Image(systemName: "photo").imageScale(.large).foregroundColor(.accentColor).onTapGesture {
+                Image(systemName: "photo")
+                .imageScale(.large)
+                .foregroundColor(.accentColor)
+                .onTapGesture {
                     self.imagePickerSourceType = .photoLibrary
                     self.showImagePicker = true
                 }
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                    Image(systemName: "camera").imageScale(.large).foregroundColor(.accentColor).onTapGesture {
+                    Image(systemName: "camera")
+                        .imageScale(.large)
+                        .foregroundColor(.accentColor)
+                        .onTapGesture {
                         self.imagePickerSourceType = .camera
                         self.showImagePicker = true
                     }
