@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="SaleItem" representedClassName="SaleItem" syncable="YES">
         <attribute name="buyDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="entryDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="grossTotal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="itemCost" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="marketPlace_" optional="YES" attributeType="String"/>
+        <attribute name="initialCost" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="otherFees" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="profitable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sellDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="sellDescriptor_" optional="YES" attributeType="String"/>
+        <attribute name="sellPrice" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="shippingFees" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="SaleItem" positionX="-63" positionY="-18" width="128" height="209"/>
+        <element name="SaleItem" positionX="0" positionY="0" width="128" height="194"/>
     </elements>
 </model>

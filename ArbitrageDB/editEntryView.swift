@@ -47,7 +47,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.itemCost)", text: $entry.price)
+                        TextField("\(editItem.initialCost)", text: $entry.price)
                         { isEditing in
                             } onCommit: {
                                 
@@ -65,7 +65,7 @@ struct editEntryView: View {
                             .font(.headline)
                             .fixedSize()
                         Text("$")
-                        TextField("\(editItem.grossTotal)", text: $entry.profit)
+                        TextField("\(editItem.sellPrice)", text: $entry.profit)
                         { isEditing in
                             } onCommit: {
                             }

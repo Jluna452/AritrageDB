@@ -16,7 +16,6 @@ extension SaleItem {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<SaleItem> {
         let request = NSFetchRequest<SaleItem>(entityName: "SaleItem")
         request.sortDescriptors = [NSSortDescriptor(key: "sellDate_", ascending: false)]
-//        request.predicate = predicate
         return request
     }
 
@@ -55,8 +54,8 @@ extension SaleItem {
     }
     @NSManaged public var buyDate_: Date?
     @NSManaged public var entryDate_: Date?
-    @NSManaged public var grossTotal: Float
-    @NSManaged public var itemCost: Float
+    @NSManaged public var sellPrice: Float
+    @NSManaged public var initialCost: Float
     @NSManaged public var image: Data
     @NSManaged public var marketPlace_: String?
     @NSManaged public var otherFees: Float

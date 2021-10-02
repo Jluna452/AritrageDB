@@ -42,11 +42,11 @@ class ViewModel: ObservableObject {
         newItem.buyDate = buyDate
         newItem.entryDate = Date()
         newItem.sellDate = sellDate
-        newItem.grossTotal = toCurrency(entry: profit)
-        newItem.itemCost = toCurrency(entry: price)
+        newItem.sellPrice = toCurrency(entry: profit)
+        newItem.initialCost = toCurrency(entry: price)
         newItem.shippingFees = toCurrency(entry: shippingFee)
         newItem.otherFees = toCurrency(entry: miscFees)
-        newItem.profitable = (newItem.grossTotal > newItem.itemCost + newItem.shippingFees + newItem.otherFees) ? true : false
+        newItem.profitable = (newItem.sellPrice > newItem.initialCost + newItem.shippingFees + newItem.otherFees) ? true : false
 
         if let tmp = image{
             newItem.image = tmp.pngData()!
@@ -62,11 +62,11 @@ class ViewModel: ObservableObject {
     
     func editSale(editItem:SaleItem, sellDescriptor:String, price:String, profit:String, shippingFee: String, miscFees:String, quantity: String, image:UIImage?) {
         editItem.sellDescriptor = (sellDescriptor != "") ? sellDescriptor : editItem.sellDescriptor
-        editItem.grossTotal = (profit != "") ? toCurrency(entry: profit):editItem.grossTotal
-        editItem.itemCost = (price != "") ? toCurrency(entry: price):editItem.itemCost
+        editItem.sellPrice = (profit != "") ? toCurrency(entry: profit):editItem.sellPrice
+        editItem.initialCost = (price != "") ? toCurrency(entry: price):editItem.initialCost
         editItem.shippingFees = (shippingFee != "") ? toCurrency(entry: shippingFee):editItem.shippingFees
         editItem.otherFees = (miscFees != "") ? toCurrency(entry: miscFees):editItem.otherFees
-        editItem.profitable = (editItem.grossTotal > editItem.itemCost + editItem.shippingFees + editItem.otherFees)  ? true : false
+        editItem.profitable = (editItem.sellPrice > editItem.initialCost + editItem.shippingFees + editItem.otherFees)  ? true : false
 
         if let tmp = Int(quantity){
             editItem.quantity = Int16(exactly: tmp) ?? editItem.quantity

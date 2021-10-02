@@ -16,14 +16,14 @@ struct saleView: View {
         self.viewModel = viewModel
         
         if item.profitable{
-            otherFeesAngle = Double(item.otherFees/item.grossTotal)*360
-            shippingFeesAngle = otherFeesAngle + Double(item.otherFees/item.grossTotal)*360
-            itemCostAngle = shippingFeesAngle + Double(item.itemCost/item.grossTotal)*360
+            otherFeesAngle = Double(item.otherFees/item.sellPrice)*360
+            shippingFeesAngle = otherFeesAngle + Double(item.otherFees/item.sellPrice)*360
+            itemCostAngle = shippingFeesAngle + Double(item.initialCost/item.sellPrice)*360
             grossProfitAngle = 360
         }
         
         else{
-            let divisor = Double(item.otherFees + item.itemCost + item.shippingFees)
+            let divisor = Double(item.otherFees + item.initialCost + item.shippingFees)
             otherFeesAngle = (Double(item.otherFees)/divisor) * 360
             shippingFeesAngle = otherFeesAngle + (Double(item.shippingFees)/divisor) * 360
             itemCostAngle = 360
@@ -31,7 +31,10 @@ struct saleView: View {
     }
 
     var body: some View {
-        NavigationView{
+        VStack{
+            
+            Text("Item Sold for $\(item.sellPrice, specifier: "%.2f")")
+                
             ZStack{
                 Group{
                     if(item.profitable){
@@ -62,24 +65,92 @@ struct saleView: View {
                     
                     Circle()
                         .foregroundColor(Color.white)
-//                        .overlay(
-//                            Group{
-//                                Text("Gross Profit")
-//                                Text((item.grossTotal - item.shippingFees - item.otherFees - item.itemCost), specifier: "%.2f"))
-//                            }
-//                            
-//                        )
+                        .overlay(
+                            Group{
+                                VStack{
+                                    Text("Gross Profit")
+                                    Text("$\(item.sellPrice - (item.shippingFees + item.otherFees + item.initialCost), specifier: "%.2f")")
+                                    Text("Quantity: \(item.quantity)")
+                                }
+                                
+                            }
+
+                        )
                         .frame(width: 250, height: 250, alignment: .center)
                 }
                 
+                
             }
+            legend
+            editButton
 
         }
-        .navigationBarTitle("\(item.sellDescriptor) stats:")
-        .navigationBarItems(trailing: editButton)
+        
+    }
+    
+    
+    var legend: some View{
+        VStack{
+            Group{
+                HStack{
+                    RoundedRectangle(cornerRadius: 5.0)
+                        .fill(.purple)
+                        .frame(width: 20, height: 20)
+                        Text("Initial cost")
+                    Spacer()
+                        Text("$\(item.initialCost, specifier: "%.2f")")
+                }
+
+            }
+            
+            
+            Group{
+                HStack{
+                    RoundedRectangle(cornerRadius: 5.0)
+                        .fill(.blue)
+                        .frame(width: 20, height: 20)
+                        Text("shipping fees")
+                    Spacer()
+                    Text("$\(item.shippingFees, specifier: "%.2f")")
+                    
+                }
+                
+            }
+            
+            
+            Group{
+                HStack{
+                    RoundedRectangle(cornerRadius: 5.0)
+                        .fill(.red)
+                        .frame(width: 20, height: 20)
+                        Text("miscelanous fees")
+                        Spacer()
+                        Text("$\(item.otherFees, specifier: "%.2f")")
+                        
+                }
+
+            }
+            
+           
+            
+            Group{
+                HStack{
+                    RoundedRectangle(cornerRadius: 5.0)
+                    .fill(.orange)
+                    .frame(width: 20, height: 20)
+                    Text("Gross profit")
+                    Spacer()
+                    Text("$\(item.sellPrice - (item.otherFees + item.initialCost + item.shippingFees), specifier: "%.2f")")
+                    
+                }
+                
+            }
+        
+        }
 
     }
     
+
     var editButton: some View {
         Button("Edit"){
             showEntry = true
@@ -87,6 +158,10 @@ struct saleView: View {
         .sheet(isPresented: $showEntry){
             editEntryView(viewModel: viewModel, editItem:item, isPresented: $showEntry)
         }
+        .padding()
+        .background(Color.blue)
+        .foregroundColor(Color.black)
+        .cornerRadius(10)
     }
 
     @State var showEntry: Bool = false
@@ -98,37 +173,6 @@ struct saleView: View {
     var grossProfitAngle:Double = 0
 }
 
-struct PieChartRows: View {
-    var colors: [Color]
-    var names: [String]
-    var values: [String]
-    var percents: [String]
-
-    var body: some View {
-        VStack{
-            ForEach(0..<self.values.count){ i in
-                HStack {
-                    RoundedRectangle(cornerRadius: 5.0)
-                        .fill(self.colors[i])
-                        .frame(width: 20, height: 20)
-                    Text(self.names[i])
-                    Spacer()
-                    VStack(alignment: .trailing) {
-                        Text(self.values[i])
-                        Text(self.percents[i])
-                            .foregroundColor(Color.gray)
-                    }
-                }
-            }
-        }
-    }
-}
-
-//struct PieChartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PieChartView(values: [1300, 500, 300], colors: [Color.blue, Color.green, Color.orange], names: ["Rent", "Transport", "Education"], backgroundColor: Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0), innerRadiusFraction: 0.6)
-//    }
-//}
 //struct SwiftUIView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SaleView()

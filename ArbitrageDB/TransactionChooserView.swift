@@ -11,8 +11,8 @@ import UIKit
 struct TransactionChooserView: View {
     @ObservedObject var viewModel:ViewModel
     var body: some View {
-        TabView{
-            NavigationView {
+        NavigationView {
+            TabView{
                 List{
                     ForEach(viewModel.allItems){ item in
                         NavigationLink(destination: saleView(item: item, viewModel: viewModel)){
@@ -27,19 +27,21 @@ struct TransactionChooserView: View {
                         }
                     }
                 }
-                .navigationBarTitle("Recent Transactions")
-                .navigationBarItems(trailing: newEntryButton)
-                .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
-                .edgesIgnoringSafeArea(.all)
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                    Text("Sales")
+                }
+                .tag(1)
             }
-            .tabItem {
-                Image(systemName: "list.bullet")
-                Text("Sales")
-            }
-            .tag(1)
+            .navigationBarTitle("Recent Transactions")
+            .navigationBarItems(trailing: newEntryButton)
+            .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
+            .edgesIgnoringSafeArea(.all)
         }
-
+            
     }
+
+    
     
     var newEntryButton: some View {
         Button("New"){
